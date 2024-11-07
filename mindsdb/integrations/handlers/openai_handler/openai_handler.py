@@ -294,7 +294,6 @@ class OpenAIHandler(BaseMLEngine):
         # Embedding mode
         if args.get('mode', self.default_mode) == 'embedding':
             api_args = {
-                'question_column': pred_args.get('question_column') or args.get('question_column'),
                 'model': pred_args.get('model_name') or args.get('model_name'),
             }
             model_name = 'embedding'
