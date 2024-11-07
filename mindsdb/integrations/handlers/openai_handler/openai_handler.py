@@ -264,10 +264,10 @@ class OpenAIHandler(BaseMLEngine):
         connection_args = self.engine_storage.get_connection_args()
 
         args['api_base'] = (pred_args.get('api_base')
-                            or self.api_base
-                            or connection_args.get('api_base')
                             or args.get('api_base')
-                            or os.environ.get('OPENAI_API_BASE', OPENAI_API_BASE))
+                            or connection_args.get('api_base')
+                            or os.environ.get('OPENAI_API_BASE', OPENAI_API_BASE)
+                            or self.api_base)
         if pred_args.get('api_organization'):
             args['api_organization'] = pred_args['api_organization']
         df = df.reset_index(drop=True)
